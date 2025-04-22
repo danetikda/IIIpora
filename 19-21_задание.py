@@ -160,6 +160,232 @@ def f(x, p, k):
 print("Задание 21:", [s for s in range(1,76)if f(s,0,0)])
 
 
+#Другая формулировка задачи 19-21
 
+def f(x, p):
+    if 56<=x<=80 or p>2:
+        return p==2
+    if x >80:
+        return p ==1
+    return f(x+1, p+1)or f(x*3, p+1)
+print("Задание 19:", [s for s in range(1,56)if f(s,0)])
+
+
+def f(x, p):
+    if 56<=x<=80 or p>3:
+        return p==3
+    if x >80:
+        return p ==2
+    if p %2==0:
+        return f(x+1, p+1)or f(x*3, p+1)
+    else:
+        return f(x+1, p+1)and  f(x*3, p+1)
+print("Задание 20:", [s for s in range(1,56)if f(s,0)])
+
+def f(x, p):
+    if 56<=x<=80 or p>4:
+        return p==2 or p==4
+    if x >80:
+        return p ==1 or p==3
+    if p %2:
+        return f(x+1, p+1)or f(x*3, p+1)
+    else:
+        return f(x+1, p+1)and  f(x*3, p+1)
+print("Задание 21:", [s for s in range(1,56)if f(s,0)])
+
+
+#Одна кучу, доп условия
+
+def f(x,p):
+    if x >=84 or p>2:
+        return p ==2
+    if p %2:
+        return f(x+1, p+1) or f(x*2 if x % 2 else x * 1.5, p+1)
+    else:
+        return f(x+1, p+1) and f(x*2 if x % 2 else x * 1.5, p+1)
+print("Задание 19",[s for s in range(1,84)if f(s,0)])
+
+def f(x,p):
+    if x >=84 or p>3:
+        return p ==3
+    if p %2==0:
+        return f(x+1, p+1) or f(x*2 if x % 2 else x * 1.5, p+1)
+    else:
+        return f(x+1, p+1) and f(x*2 if x % 2 else x * 1.5, p+1)
+print("Задание 20",[s for s in range(1,84)if f(s,0)])
+
+
+def f(x,p):
+    if x >=84 or p>4:
+        return p ==2 or p==4
+    if p %2:
+        return f(x+1, p+1) or f(x*2 if x % 2 else x * 1.5, p+1)
+    else:
+        return f(x+1, p+1) and f(x*2 if x % 2 else x * 1.5, p+1)
+print("Задание 21",[s for s in range(1,84)if f(s,0)])
+
+
+
+#Одна куча есть условия
+def f(x,p):
+    if x%10==8 or p>2: #%10 ==8 это последнее число равно 8
+        return p ==2
+    if p %2:
+        return f(x+1, p+1) or f(x+3, p+1) or f(x+11, p+1)
+    else:
+        return f(x+1, p+1) and f(x+3, p+1) and f(x+11, p+1)
+print("Задание 19",[s for s in range(10,100)if f(s,0)and s%10!=8])
+
+def f(x,p):
+    if x%10==8 or p>3:
+        return p ==3
+    if p %2==0:
+        return f(x+1, p+1) or f(x+3, p+1) or f(x+11, p+1)
+    else:
+        return f(x+1, p+1) and f(x+3, p+1) and f(x+11, p+1)
+print("Задание 20",len([s for s in range(10,100)if f(s,0)and s%10!=8]))
+
+def f(x,p):
+    if x%10==8 or p>4:
+        return p ==2 or p==4
+    if p %2:
+        return f(x+1, p+1) or f(x+3, p+1) or f(x+11, p+1)
+    else:
+        return f(x+1, p+1) and f(x+3, p+1) and f(x+11, p+1)
+print("Задание 21",([s for s in range(10,100)if f(s,0)and s%10!=8]))
+
+
+#две кучи
+
+
+def f(x,y,p):
+    if x +y >=227 or p>2:
+        return p ==2
+    return f(x+1, y, p+1) or f(x, y+1, p+1) or f(x*2, y, p+1) or f(x, y*2, p+1)
+print("Задание 19",([s for s in range(1,210)if f(17,s,0)]))
+
+def f(x,y,p):
+    if x +y >=227 or p>3:
+        return p ==3
+    if p%2==0:
+        return f(x+1, y, p+1) or f(x, y+1, p+1) or f(x*2, y, p+1) or f(x, y*2, p+1)
+    else:
+        return f(x + 1, y, p + 1) and f(x, y + 1, p + 1) and f(x * 2, y, p + 1) and f(x, y * 2, p + 1)
+print("Задание 20",([s for s in range(1,210)if f(17,s,0)]))
+
+def f(x,y,p):
+    if x +y >=227 or p>4:
+        return p ==2 or p ==4
+    if p%2:
+        return f(x+1, y, p+1) or f(x, y+1, p+1) or f(x*2, y, p+1) or f(x, y*2, p+1)
+    else:
+        return f(x + 1, y, p + 1) and f(x, y + 1, p + 1) and f(x * 2, y, p + 1) and f(x, y * 2, p + 1)
+print("Задание 21",([s for s in range(1,210)if f(17,s,0)]))
+
+
+#две кучи доп условия
+
+def f(x,y,p):
+    if x +y <=32 or p>2:
+        return p == 2
+    if p %2:
+        return f(x-1, y, p+1) or f(x, y-1, p+1) or f((x //2)+1 if x%2!=0 else x//2, y, p+1)\
+            or f(x, (y //2)+1 if y%2!=0 else y//2, p+1) # или f(x-1,y,p+1) or f(x, y-1, p+1) or (x//2+x%2,y,p+1) or f(x,y//2+y%2,p+1)
+    else:
+        return f(x-1, y, p+1) and f(x, y-1, p+1) and f((x //2)+1 if x%2!=0 else x//2, y, p+1)\
+            and f(x, (y //2)+1 if y%2!=0 else y//2, p+1) # or f(x-1,y,p+1) and f(x, y-1, p+1) and (x//2+x%2,y,p+1) and f(x,y//2+y%2,p+1)
+print("Задание 19",([s for s in range(100,22,-1)if f(10,s,0)]))
+
+def f(x,y,p):
+    if x +y <=32 or p>3:
+        return p == 3
+    if p %2==0:
+        return f(x-1, y, p+1) or f(x, y-1, p+1) or f((x //2)+1 if x%2!=0 else x//2, y, p+1)\
+            or f(x, (y //2)+1 if y%2!=0 else y//2, p+1) # или f(x-1,y,p+1) or f(x, y-1, p+1) or (x//2+x%2,y,p+1) or f(x,y//2+y%2,p+1)
+    else:
+        return f(x-1, y, p+1) and f(x, y-1, p+1) and f((x //2)+1 if x%2!=0 else x//2, y, p+1)\
+            and f(x, (y //2)+1 if y%2!=0 else y//2, p+1) # or f(x-1,y,p+1) and f(x, y-1, p+1) and (x//2+x%2,y,p+1) and f(x,y//2+y%2,p+1)
+print("Задание 20",([s for s in range(100,22,-1)if f(10,s,0)]))
+
+def f(x,y,p):
+    if x +y <=32 or p>4:
+        return p == 2 or p==4
+    if p %2:
+        return f(x-1, y, p+1) or f(x, y-1, p+1) or f((x //2)+1 if x%2!=0 else x//2, y, p+1)\
+            or f(x, (y //2)+1 if y%2!=0 else y//2, p+1) # или f(x-1,y,p+1) or f(x, y-1, p+1) or (x//2+x%2,y,p+1) or f(x,y//2+y%2,p+1)
+    else:
+        return f(x-1, y, p+1) and f(x, y-1, p+1) and f((x //2)+1 if x%2!=0 else x//2, y, p+1)\
+            and f(x, (y //2)+1 if y%2!=0 else y//2, p+1) # or f(x-1,y,p+1) and f(x, y-1, p+1) and (x//2+x%2,y,p+1) and f(x,y//2+y%2,p+1)
+print("Задание 21",([s for s in range(100,22,-1)if f(10,s,0)]))
+
+
+#финальный босс две кучи xDDD
+
+def f(x, y,p):
+    if x +y >=60 or p >1:
+        return p==1
+    if x >y:
+        return f(x+1,y,p+1)or f(x+2,y, p+1)or f(x+3,y,p+1)\
+            or f(x,y*2,p+1)
+    elif x==y:
+        return f(x + 1, y, p + 1) or f(x + 2, y, p + 1) or f(x + 3, y, p + 1) \
+            or f(x, y +1, p + 1) or f(x, y+2, p+1) or f(x,y+3,p+1)
+    else:
+        return f(x*2,y,p+1) or f(x, y+1, p+1) or f(x, y+2, p+1)or \
+            f(x, y+3,p+1)
+
+print('Задание 19 хард:', min([s1+s2 for s1 in range(1,48) for s2 in range(1,48) if f(s1,s2,0)]))
+
+def f(x, y,p):
+    if x +y >=60 or p >3:
+        return p==3
+    if p %2==0:
+        if x > y:
+            return f(x + 1, y, p + 1) or f(x + 2, y, p + 1) or f(x + 3, y, p + 1) \
+                or f(x, y * 2, p + 1)
+        elif x == y:
+            return f(x + 1, y, p + 1) or f(x + 2, y, p + 1) or f(x + 3, y, p + 1) \
+                or f(x, y + 1, p + 1) or f(x, y + 2, p + 1) or f(x, y + 3, p + 1)
+        else:
+            return f(x * 2, y, p + 1) or f(x, y + 1, p + 1) or f(x, y + 2, p + 1) or \
+                f(x, y + 3, p + 1)
+    else:
+        if x > y:
+            return f(x + 1, y, p + 1) and f(x + 2, y, p + 1) and f(x + 3, y, p + 1) \
+                and f(x, y * 2, p + 1)
+        elif x == y:
+            return f(x + 1, y, p + 1) and f(x + 2, y, p + 1) and f(x + 3, y, p + 1) \
+                and f(x, y + 1, p + 1) and f(x, y + 2, p + 1) or f(x, y + 3, p + 1)
+        else:
+            return f(x * 2, y, p + 1) and f(x, y + 1, p + 1) and f(x, y + 2, p + 1) and \
+                f(x, y + 3, p + 1)
+
+print('Задание 20 хард:',([s1 for s1 in range(1,48) if f(s1,12,0)]))
+
+def f(x, y,p):
+    if x +y >=60 or p >4:
+        return p==2 or p==4
+    if p %2:
+        if x > y:
+            return f(x + 1, y, p + 1) or f(x + 2, y, p + 1) or f(x + 3, y, p + 1) \
+                or f(x, y * 2, p + 1)
+        elif x == y:
+            return f(x + 1, y, p + 1) or f(x + 2, y, p + 1) or f(x + 3, y, p + 1) \
+                or f(x, y + 1, p + 1) or f(x, y + 2, p + 1) or f(x, y + 3, p + 1)
+        else:
+            return f(x * 2, y, p + 1) or f(x, y + 1, p + 1) or f(x, y + 2, p + 1) or \
+                f(x, y + 3, p + 1)
+    else:
+        if x > y:
+            return f(x + 1, y, p + 1) and f(x + 2, y, p + 1) and f(x + 3, y, p + 1) \
+                and f(x, y * 2, p + 1)
+        elif x == y:
+            return f(x + 1, y, p + 1) and f(x + 2, y, p + 1) and f(x + 3, y, p + 1) \
+                and f(x, y + 1, p + 1) and f(x, y + 2, p + 1) or f(x, y + 3, p + 1)
+        else:
+            return f(x * 2, y, p + 1) and f(x, y + 1, p + 1) and f(x, y + 2, p + 1) and \
+                f(x, y + 3, p + 1)
+
+print('Задание 21 хард:',([s1 for s1 in range(1,35) if f(s1,25,0)]))
 
     
